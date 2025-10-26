@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - BackGround
+  - Top
+  - Bottom
+  - Stair
+  - Potal
   layers:
   - Default
   - TransparentFX
@@ -29,7 +33,7 @@ TagManager:
   - Layer 1
   - Layer 2
   - Layer 3
-  - 
+  - Layer4
   - 
   - 
   - 
@@ -50,4 +54,10 @@ TagManager:
     locked: 0
   - name: Layer 3
     uniqueID: 4189426099
+    locked: 0
+  - name: Player
+    uniqueID: 2928865235
+    locked: 0
+  - name: New Layer 5
+    uniqueID: 3178071761
     locked: 0

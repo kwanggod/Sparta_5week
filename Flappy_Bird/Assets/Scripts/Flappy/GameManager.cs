@@ -15,7 +15,15 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        gameManager = this;
+        if (gameManager == null)
+        {
+            gameManager = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         uiManager = FindObjectOfType<UiManager>();
     }
     private void Start()
@@ -34,5 +42,13 @@ public class GameManager : MonoBehaviour
     {
         currentScore += score;
         uiManager.UpdateScore(currentScore);
+    }
+    public void PauseGame()
+    {
+        Time.timeScale = 0f;
+    }
+    public void ResumeGame()
+    {
+        Time.timeScale = 1f;
     }
 }

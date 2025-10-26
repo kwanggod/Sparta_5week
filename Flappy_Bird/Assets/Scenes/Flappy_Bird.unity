@@ -1499,6 +1499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63d2a8c739f330e428dbeff78123f2d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 1689116365}
 --- !u!1001 &542639311
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3033,7 +3034,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Click To Restart
+  m_text: Click To ReStart
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

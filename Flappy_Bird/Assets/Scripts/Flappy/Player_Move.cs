@@ -12,6 +12,7 @@ public class Player_Move : MonoBehaviour
     public float forwardSpeed = 3f;
     public bool isDead = false;
     float deathcooldown = 0f;
+    bool start;
 
     bool isFlap = false;
 
@@ -24,34 +25,44 @@ public class Player_Move : MonoBehaviour
         gameManager = GameManager.Instance;
         animator = GetComponentInChildren<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
-
-
+        start = false;
     }
 
 
     void Update()
     {
-        if (isDead)
+        if (!start)
         {
-            if(deathcooldown <= 0)
+            gameManager.PauseGame();
+            if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
             {
-                if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
+                start = true;
+                gameManager.ResumeGame();
+            }
+        }
+
+        if (isDead)
+            {
+                if (deathcooldown <= 0)
                 {
-                    gameManager.RestartGame();
+                    if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
+                    {
+                        gameManager.RestartGame();
+                    }
+                }
+                else
+                {
+                    deathcooldown -= Time.deltaTime;
                 }
             }
             else
             {
-                deathcooldown -= Time.deltaTime;
+                if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
+                {
+                    isFlap = true;
+                }
             }
-        }
-        else
-        {
-            if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
-            {
-                isFlap = true;
-            }
-        }
+        
     }
     private void FixedUpdate()
     {
@@ -85,4 +96,5 @@ public class Player_Move : MonoBehaviour
         animator.SetInteger("IsDie", 1);
         gameManager.GameOver();
     }
+
 }
