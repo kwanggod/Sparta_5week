@@ -4,21 +4,26 @@ using UnityEngine;
 
 public class FollowCamera : MonoBehaviour
 {
-
     public Transform target;
-    float offsetX;
+    public float lerpSpeed = 1.0f;
 
-    // Start is called before the first frame update
+    private Vector3 offset;
+
+    private Vector3 targetPos;
+
     void Start()
     {
-        offsetX = transform.position.x - target.position.x;
+        if (target == null) return;
+
+        offset = transform.position - target.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        Vector3 pos = transform.position;
-        pos.x = target.position.x + offsetX;
-        transform.position = pos;
+        if (target == null) return;
+
+        targetPos = target.position + offset;
+        transform.position = Vector3.Lerp(transform.position, targetPos, lerpSpeed * Time.deltaTime);
     }
+
 }
