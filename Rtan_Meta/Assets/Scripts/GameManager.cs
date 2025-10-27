@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance {get; private set; }
     public UiManager uiManager { get; private set; }
-    public MainUiManager mainUiManager { get; private set; }
+    public Main_UiManager mainUiManager { get; private set; }
     public int currentScore = 0;
     public int highScore=0;
 
@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
         uiManager = ui;
 
     }
-    public void RegisterMainUI(MainUiManager mainUi)
+    public void RegisterMainUI(Main_UiManager mainUi)
     {
         mainUiManager = mainUi;
     }

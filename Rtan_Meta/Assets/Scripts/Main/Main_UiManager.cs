@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class MainUiManager : MonoBehaviour
+public class Main_UiManager : MonoBehaviour
 {
     public TextMeshProUGUI FlappyTxt;
+
     // Start is called before the first frame update
     void Start()
     {
