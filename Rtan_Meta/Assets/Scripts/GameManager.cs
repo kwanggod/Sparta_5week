@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
     public int currentScore = 0;
     public int highScore=0;
 
-    
 
     private void Awake()
     {
@@ -28,7 +27,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-
     }
 
     public void RegisterUI(UiManager ui)
