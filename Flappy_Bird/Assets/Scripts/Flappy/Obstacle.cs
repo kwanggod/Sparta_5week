@@ -19,7 +19,7 @@ public class Obstacle : MonoBehaviour
 
     private void Start()
     {
-        gamemanager= GameManager.Instance;
+        gamemanager= GameManager.instance;
     }
     public Vector3 SetRnadomPlace(Vector3 lastPosition, int obstaclCount)
     {

@@ -22,7 +22,7 @@ public class Player_Move : MonoBehaviour
 
     void Start()
     {
-        gameManager = GameManager.Instance;
+        gameManager = GameManager.instance;
         animator = GetComponentInChildren<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
         start = false;
@@ -42,27 +42,15 @@ public class Player_Move : MonoBehaviour
         }
 
         if (isDead)
+            deathcooldown -= Time.deltaTime;
+        else
+        {
+            if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
             {
-                if (deathcooldown <= 0)
-                {
-                    if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
-                    {
-                        gameManager.RestartGame();
-                    }
-                }
-                else
-                {
-                    deathcooldown -= Time.deltaTime;
-                }
+                isFlap = true;
             }
-            else
-            {
-                if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
-                {
-                    isFlap = true;
-                }
-            }
-        
+        }
+
     }
     private void FixedUpdate()
     {
@@ -80,7 +68,7 @@ public class Player_Move : MonoBehaviour
 
         _rigidbody.velocity = velocity;
 
-        float angle = Mathf.Clamp((_rigidbody.velocity.y*5f), -90, 90);
+        float angle = Mathf.Clamp((_rigidbody.velocity.y * 5f), -90, 90);
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }
     private void OnCollisionEnter2D(Collision2D collision)

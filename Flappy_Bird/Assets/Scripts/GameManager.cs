@@ -5,42 +5,60 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    static GameManager gameManager;
-    public static GameManager Instance { get { return gameManager; } }
+    public static GameManager instance {get; private set; }
+    public UiManager uiManager { get; private set; }
+    public MainUiManager mainUiManager { get; private set; }
+    public int currentScore = 0;
+    public int highScore=0;
 
-    private int currentScore = 0;
-
-    UiManager uiManager;
-    public UiManager UiManager { get { return uiManager; } }
+    
 
     private void Awake()
     {
-        if (gameManager == null)
+        if (instance == null)
         {
-            gameManager = this;
+            instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
-        uiManager = FindObjectOfType<UiManager>();
     }
+
     private void Start()
     {
-        uiManager.UpdateScore(0);
+
     }
+
+    public void RegisterUI(UiManager ui)
+    {
+        uiManager = ui;
+
+    }
+    public void RegisterMainUI(MainUiManager mainUi)
+    {
+        mainUiManager = mainUi;
+    }
+
     public void GameOver()
     {
         uiManager.SetRestart();
+        uiManager.HighScore(highScore);
     }
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+    public void ExitGame()
+    {
+        SceneManager.LoadScene("Main");
+    }
     public void AddSocre(int score)
     {
         currentScore += score;
+        if (highScore < currentScore)
+            highScore = currentScore;
         uiManager.UpdateScore(currentScore);
     }
     public void PauseGame()

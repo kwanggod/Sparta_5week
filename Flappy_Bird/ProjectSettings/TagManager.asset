@@ -9,6 +9,7 @@ TagManager:
   - Bottom
   - Stair
   - Potal
+  - Flappy
   layers:
   - Default
   - TransparentFX
@@ -34,7 +35,7 @@ TagManager:
   - Layer 2
   - Layer 3
   - Layer4
-  - 
+  - WorldUI
   - 
   - 
   - 
